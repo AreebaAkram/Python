@@ -29,20 +29,51 @@ p1.greet()
 # p2.greet(p2.name, p2.age)
 
 class Dog:
+    color = "" #class property
     def __init__(myObject, name, age, gender):
-        myObject.name = name
+        myObject.name = name  #obj properties
         myObject.age = age
         myObject.gender = gender
     def bark(abc):
         print(abc.name + " says Woof!")
     def myproperties(self):
-        print(f"{self.name} {self.age} {self.gender}")
+        print(f"{self.name} {self.age} {self.gender} {self.color}")
+    def myInfo(self):
+        self.age +=1     # methods can update properties
+        print(f"{self.name} age is {self.age} and it's gender is {self.gender}")
 
         
 d1 = Dog("Buddy", 3, "Male")
+d1.color = "black"
 print(d1.name, d1.age)
 d1.age = 5  # update property
 d1.bark()
 d1.myproperties()
+d1.myInfo()
 del d1.gender #delete gender 
 # print(d1.gender)    will produce an error
+
+
+class playlist:
+    def __init__(self, name):
+        self.name = name
+        self.songs = []
+    def addSong(self, song):
+        self.songs.append(song)
+        print(f"{song} is successfully added")
+    def removeSong(self, song):
+        if song in self.songs:
+            self.songs.remove(song)
+            print(f" {song} is successfully deleted")
+        else:
+            print(f"{song} is not found")
+    def showSongs(self):
+        print(f"{self.name} Playlist is here: ")
+        for song in self.songs:
+            print(f" {song}")
+myPlaylist = playlist("Favorites")
+myPlaylist.addSong("Ignite")
+myPlaylist.addSong("We don't talk anymore")
+myPlaylist.addSong("First Love")
+myPlaylist.removeSong("First Love")
+myPlaylist.showSongs()
